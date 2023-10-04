@@ -1,3 +1,10 @@
+# 1.0.0 (2023-10-04)
+
+
+### Features
+
+* :white_check_mark: working initial commit ([dae6f19](https://github.com/tomerh2001/email-release-pipe/commit/dae6f19028fcd0ffe1b1ac46ea20cb73bedd9e91))
+
 # [1.7.0](https://github.com/tomerh2001/semantic-release-repo-template/compare/v1.6.1...v1.7.0) (2023-10-01)
 
 
