@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/tomerh2001/email-release-pipe/compare/v1.0.0...v1.1.0) (2023-10-04)
+
+
+### Features
+
+* :sparkles: added the option to get the changelog from the note of the head commit ([05757fb](https://github.com/tomerh2001/email-release-pipe/commit/05757fb03eaa43445db5ab333cf2f94cf56617ed))
+
 # 1.0.0 (2023-10-04)
 
 
