@@ -1,5 +1,5 @@
 {
-  "name": "semantic-release-repo-template",
+  "name": "email-release-pipe",
   "module": "index.ts",
   "type": "module",
   "devDependencies": {
