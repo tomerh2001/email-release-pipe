@@ -7,5 +7,7 @@ LABEL org.opencontainers.image.source $GH_REPO
 WORKDIR /repo
 
 COPY package.json bun.lockb index.ts /repo/
-RUN bun i
-CMD ["bun", "run", "/repo/index.ts"]
+RUN apk add --no-cache git && \
+    bun install
+
+CMD ["sh", "pipe.sh"]

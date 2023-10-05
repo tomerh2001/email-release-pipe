@@ -3,5 +3,6 @@ services:
     image: tomerh2001/email-release-pipe:latest
     build:
       dockerfile: ./Dockerfile
+    env_file: .env
     volumes:
       - ./:/repo

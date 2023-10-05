@@ -22,7 +22,7 @@ import {name, version} from './package.json';
  * - `sslVerify`: Whether or not to verify the SSL certificate of the email server.
  * - `subject`: The subject line to use for the release email.
  */
-export function getConfig(): any {
+export function getConfig() {
 	return {
 		packageName: process.env.PACKAGE_NAME ?? name,
 		version: process.env.VERSION ?? version,
@@ -31,7 +31,7 @@ export function getConfig(): any {
 		from: process.env.FROM,
 		to: process.env.TO,
 		sslVerify: process.env.SSL_VERIFY ?? false,
-		subject: process.env.SUBJECT ?? `Release v${config.version} for ${config.packageName}`,
+		subject: process.env?.SUBJECT ?? `Release v${process.env.VERSION ?? version} for ${process.env.PACKAGE_NAME ?? name}`,
 	};
 }
 
@@ -69,6 +69,8 @@ export async function getChangeLogFromNote() {
 }
 
 const config = getConfig();
+console.debug('Configuration:', config);
+
 const simpleGit = git({config: [`http.sslVerify=${config.sslVerify}`]});
 const transporter = nodemailer.createTransport({
 	service: 'gmail',
