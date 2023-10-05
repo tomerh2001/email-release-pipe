@@ -1,0 +1,7 @@
+services:
+  email-release-pipe:
+    image: tomerh2001/email-release-pipe:latest
+    build:
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./:/repo
