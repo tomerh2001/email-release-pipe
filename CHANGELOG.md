@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/tomerh2001/email-release-pipe/compare/v1.1.0...v1.2.0) (2023-10-05)
+
+
+### Features
+
+* :building_construction: updated docker files ([2e1d152](https://github.com/tomerh2001/email-release-pipe/commit/2e1d1526a4528de4ac43f6367574844942f42725))
+
 # [1.1.0](https://github.com/tomerh2001/email-release-pipe/compare/v1.0.0...v1.1.0) (2023-10-04)
 
 
