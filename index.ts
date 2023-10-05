@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
@@ -11,7 +10,19 @@ import nodemailer from 'nodemailer';
 import git from 'simple-git';
 import {name, version} from './package.json';
 
-function getConfig() {
+/**
+ * Returns an object containing configuration options for the email release pipe.
+ * @returns An object containing the following properties:
+ * - `packageName`: The name of the package being released.
+ * - `version`: The version of the package being released.
+ * - `username`: The username to use for authentication with the email server.
+ * - `password`: The password to use for authentication with the email server.
+ * - `from`: The email address to use as the sender.
+ * - `to`: The email address to use as the recipient.
+ * - `sslVerify`: Whether or not to verify the SSL certificate of the email server.
+ * - `subject`: The subject line to use for the release email.
+ */
+export function getConfig(): any {
 	return {
 		packageName: process.env.PACKAGE_NAME ?? name,
 		version: process.env.VERSION ?? version,
@@ -20,15 +31,26 @@ function getConfig() {
 		from: process.env.FROM,
 		to: process.env.TO,
 		sslVerify: process.env.SSL_VERIFY ?? false,
+		subject: process.env.SUBJECT ?? `Release v${config.version} for ${config.packageName}`,
 	};
 }
 
-async function getChangelog() {
+/**
+ * Retrieves the contents of the CHANGELOG.md file, converts it to HTML using the
+ * `marked` library, and applies emoji replacements using the `emojify` library.
+ * @returns A Promise that resolves to the HTML content of the CHANGELOG.md file with
+ * emoji replacements applied.
+ */
+export async function getChangelog() {
 	const changelog = await Bun.file('CHANGELOG.md').text();
 	return marked(emojify(changelog));
 }
 
-async function getChangeLogFromNote() {
+/**
+ * Retrieves the changelog from the latest commit's note using simple-git.
+ * @returns The changelog in markdown format, or null if an error occurred.
+ */
+export async function getChangeLogFromNote() {
 	try {
 		const commitHash: string = await simpleGit.revparse(['HEAD']);
 		console.log('Latest commit hash:', commitHash.trim());
@@ -60,7 +82,7 @@ const changelog = await getChangeLogFromNote() ?? await getChangelog();
 const mailOptions = {
 	from: config.from,
 	to: config.to,
-	subject: `Release v${config.version} for ${config.packageName}`,
+	subject: config.subject,
 	html: changelog,
 };
 
