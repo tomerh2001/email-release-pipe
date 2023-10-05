@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/tomerh2001/email-release-pipe/compare/v1.2.0...v1.2.1) (2023-10-05)
+
+
+### Bug Fixes
+
+* added pipe.sh ([cbd1140](https://github.com/tomerh2001/email-release-pipe/commit/cbd1140648b70b6a7b4ebdf79924ef669a02c38e))
+
 # [1.2.0](https://github.com/tomerh2001/email-release-pipe/compare/v1.1.0...v1.2.0) (2023-10-05)
 
 
