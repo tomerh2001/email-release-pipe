@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/tomerh2001/email-release-pipe/compare/v1.3.0...v1.3.1) (2023-10-06)
+
+
+### Bug Fixes
+
+* updated the commander arguments ([7b8198f](https://github.com/tomerh2001/email-release-pipe/commit/7b8198f15f845c9e746cb43dd25fd68f8fc3eb52))
+
 # [1.3.0](https://github.com/tomerh2001/email-release-pipe/compare/v1.2.2...v1.3.0) (2023-10-06)
 
 
