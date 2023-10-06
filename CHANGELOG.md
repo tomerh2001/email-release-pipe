@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/tomerh2001/email-release-pipe/compare/v1.3.2...v1.3.3) (2023-10-06)
+
+
+### Bug Fixes
+
+* added env variables support ([63c699a](https://github.com/tomerh2001/email-release-pipe/commit/63c699a20b0ad250f640a0667e27389c9979ee66))
+
 ## [1.3.2](https://github.com/tomerh2001/email-release-pipe/compare/v1.3.1...v1.3.2) (2023-10-06)
 
 
