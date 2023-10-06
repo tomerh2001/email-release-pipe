@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/tomerh2001/email-release-pipe/compare/v1.2.1...v1.2.2) (2023-10-06)
+
+
+### Bug Fixes
+
+* added changelog file env variablles ([21e8495](https://github.com/tomerh2001/email-release-pipe/commit/21e84956bc15edaee5400c5d75dbd6589d446736))
+
 ## [1.2.1](https://github.com/tomerh2001/email-release-pipe/compare/v1.2.0...v1.2.1) (2023-10-05)
 
 
