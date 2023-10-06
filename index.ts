@@ -14,15 +14,15 @@ import Bun from 'bun';
 
 const program = new Command();
 program.argument('<basePath>', 'The base path of the package being released')
-	.requiredOption('-u, --username <type>', 'Username for authentication with the email server')
-	.requiredOption('-p, --password <type>', 'Password for authentication with the email server')
-	.requiredOption('-f, --from <type>', 'Sender\'s email address')
-	.requiredOption('-t, --to <type>', 'Recipient\'s email address')
-	.option('-n, --package-name <type>', 'The name of the package being released')
-	.option('-v, --pkg-version <type>', 'The version of the package being released')
-	.option('--ssl-verify <boolean>', 'Whether or not to verify the SSL certificate of the email server', false)
-	.option('--changelog-file <type>', 'The path of the CHANGELOG.md file', 'CHANGELOG.md')
-	.option('-s, --subject <type>', 'The subject line to use for the release email')
+	.requiredOption('-u, --username <type>', 'Username for authentication with the email server', Bun.env.EMAIL_USERNAME)
+	.requiredOption('-p, --password <type>', 'Password for authentication with the email server', Bun.env.EMAIL_PASSWORD)
+	.requiredOption('-f, --from <type>', 'Sender\'s email address', Bun.env.EMAIL_FROM)
+	.requiredOption('-t, --to <type>', 'Recipient\'s email address', Bun.env.EMAIL_TO)
+	.option('-n, --package-name <type>', 'The name of the package being released', Bun.env.PACKAGE_NAME)
+	.option('-v, --pkg-version <type>', 'The version of the package being released', Bun.env.PACKAGE_VERSION)
+	.option('--ssl-verify <boolean>', 'Whether or not to verify the SSL certificate of the email server', Bun.env.SSL_VERIFY === 'true')
+	.option('--changelog-file <type>', 'The path of the CHANGELOG.md file', Bun.env.CHANGELOG_FILE ?? 'CHANGELOG.md')
+	.option('-s, --subject <type>', 'The subject line to use for the release email', Bun.env.EMAIL_SUBJECT)
 	.parse(Bun.argv);
 
 const options = program.opts();
