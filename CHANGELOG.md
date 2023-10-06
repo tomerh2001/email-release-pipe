@@ -1,3 +1,10 @@
+## [1.3.4](https://github.com/tomerh2001/email-release-pipe/compare/v1.3.3...v1.3.4) (2023-10-06)
+
+
+### Bug Fixes
+
+* changed required option to option ([2899d88](https://github.com/tomerh2001/email-release-pipe/commit/2899d88793809cdcb53aee8268d0dbcc0e14d763))
+
 ## [1.3.3](https://github.com/tomerh2001/email-release-pipe/compare/v1.3.2...v1.3.3) (2023-10-06)
 
 
