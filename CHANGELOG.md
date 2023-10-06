@@ -1,3 +1,10 @@
+## [1.3.6](https://github.com/tomerh2001/email-release-pipe/compare/v1.3.5...v1.3.6) (2023-10-06)
+
+
+### Bug Fixes
+
+* added debug print ([0ff1a17](https://github.com/tomerh2001/email-release-pipe/commit/0ff1a17ac289f81a5eb3f29341d76cf766b42333))
+
 ## [1.3.5](https://github.com/tomerh2001/email-release-pipe/compare/v1.3.4...v1.3.5) (2023-10-06)
 
 
