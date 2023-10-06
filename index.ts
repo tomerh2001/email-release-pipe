@@ -11,11 +11,11 @@ import {emojify} from 'node-emoji';
 import Bun from 'bun';
 
 const program = new Command();
-program.requiredOption('-u, --username <type>', 'Username for authentication with the email server')
+program.argument('<basePath>', 'The base path of the package being released')
+	.requiredOption('-u, --username <type>', 'Username for authentication with the email server')
 	.requiredOption('-p, --password <type>', 'Password for authentication with the email server')
 	.requiredOption('-f, --from <type>', 'Sender\'s email address')
 	.requiredOption('-t, --to <type>', 'Recipient\'s email address')
-	.requiredOption('--base-path <type>', 'Base path for relative paths')
 	.option('-n, --package-name <type>', 'The name of the package being released')
 	.option('-v, --pkg-version <type>', 'The version of the package being released')
 	.option('--ssl-verify <boolean>', 'Whether or not to verify the SSL certificate of the email server', false)
