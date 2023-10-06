@@ -2,6 +2,9 @@
   "name": "email-release-pipe",
   "module": "index.ts",
   "type": "module",
+  "bin": {
+    "email-release-pipe": "./index.ts"
+  },
   "devDependencies": {
     "@codedependant/semantic-release-docker": "^4.4.0",
     "@semantic-release/changelog": "^6.0.3",
@@ -10,6 +13,7 @@
     "@semantic-release/github": "^9.2.1",
     "@semantic-release/npm": "^11.0.0",
     "@semantic-release/release-notes-generator": "^12.0.0",
+    "@types/nodemailer": "^6.4.11",
     "bun-types": "latest",
     "xo": "^0.56.0"
   },
@@ -21,6 +25,7 @@
     "test": "xo"
   },
   "dependencies": {
+    "commander": "^11.0.0",
     "marked": "^9.0.3",
     "node-emoji": "^2.1.0",
     "nodemailer": "^6.9.5",
