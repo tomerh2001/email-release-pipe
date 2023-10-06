@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/tomerh2001/email-release-pipe/compare/v1.2.2...v1.3.0) (2023-10-06)
+
+
+### Features
+
+* added commander ([79221ac](https://github.com/tomerh2001/email-release-pipe/commit/79221acc1c2cd3b0652563dea2b5b6093fa8345a))
+
 ## [1.2.2](https://github.com/tomerh2001/email-release-pipe/compare/v1.2.1...v1.2.2) (2023-10-06)
 
 
