@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/tomerh2001/email-release-pipe/compare/v1.3.8...v1.4.0) (2023-10-06)
+
+
+### Features
+
+* locked dns lookup of smtp.gmail.com to ipv4 only ([9c6e34d](https://github.com/tomerh2001/email-release-pipe/commit/9c6e34d493d4b934c9fff663c0675b7ffef603b1))
+
 ## [1.3.8](https://github.com/tomerh2001/email-release-pipe/compare/v1.3.7...v1.3.8) (2023-10-06)
 
 
