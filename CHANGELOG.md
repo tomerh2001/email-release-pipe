@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/tomerh2001/email-release-pipe/compare/v1.3.1...v1.3.2) (2023-10-06)
+
+
+### Bug Fixes
+
+* added node shebang ([40d1d28](https://github.com/tomerh2001/email-release-pipe/commit/40d1d28e340a08bcd9276cd06c2dd1522f86e15e))
+
 ## [1.3.1](https://github.com/tomerh2001/email-release-pipe/compare/v1.3.0...v1.3.1) (2023-10-06)
 
 
