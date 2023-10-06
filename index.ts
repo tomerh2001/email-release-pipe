@@ -50,12 +50,13 @@ async function sendEmail(path: string) {
 	const {name, version} = packageJson;
 
 	const subject = options.subject ?? `Release v${options.pkgVersion || version} for ${options.packageName || name}`;
+	const [gmailSmtp] = await Bun.dns.lookup('smtp.gmail.com', {family: 'IPv4'});
+	console.debug('Resolved smtp.gmail.com to', gmailSmtp);
+
 	const transporter = nodemailer.createTransport({
-		service: 'gmail',
+		host: gmailSmtp.address,
+		port: 465,
 		secure: true,
-		logger: true,
-		debug: true,
-		ignoreTLS: true,
 		auth: {
 			user: options.username,
 			pass: options.password,
