@@ -31,6 +31,7 @@ export function getConfig() {
 		from: process.env.FROM,
 		to: process.env.TO,
 		sslVerify: process.env.SSL_VERIFY ?? false,
+		changelogFile: process.env.CHANGELOG_FILE ?? 'CHANGELOG.md',
 		subject: process.env?.SUBJECT ?? `Release v${process.env.VERSION ?? version} for ${process.env.PACKAGE_NAME ?? name}`,
 	};
 }
@@ -42,30 +43,8 @@ export function getConfig() {
  * emoji replacements applied.
  */
 export async function getChangelog() {
-	const changelog = await Bun.file('CHANGELOG.md').text();
+	const changelog = await Bun.file(config.changelogFile).text();
 	return marked(emojify(changelog));
-}
-
-/**
- * Retrieves the changelog from the latest commit's note using simple-git.
- * @returns The changelog in markdown format, or null if an error occurred.
- */
-export async function getChangeLogFromNote() {
-	try {
-		const commitHash: string = await simpleGit.revparse(['HEAD']);
-		console.log('Latest commit hash:', commitHash.trim());
-
-		const noteHash = await simpleGit.raw(['notes', 'show']);
-		console.log('Note hash:', noteHash.trim());
-
-		const changelog = await simpleGit.raw(['notes', 'show', noteHash.trim()]);
-		console.log('Note:', changelog.trim());
-
-		return marked(emojify(changelog));
-	} catch (error) {
-		console.error(error);
-		return null;
-	}
 }
 
 const config = getConfig();
@@ -80,7 +59,7 @@ const transporter = nodemailer.createTransport({
 	},
 });
 
-const changelog = await getChangeLogFromNote() ?? await getChangelog();
+const changelog = await getChangelog();
 const mailOptions = {
 	from: config.from,
 	to: config.to,
