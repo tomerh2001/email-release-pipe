@@ -27,6 +27,7 @@ program.argument('<path>', 'The base path of the package being released')
 	.parse(Bun.argv);
 
 const options = program.opts();
+console.debug('Options:', options);
 
 /**
  * Retrieves the changelog from a file and returns it as a Markdown string with emojis.
