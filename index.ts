@@ -51,6 +51,8 @@ async function sendEmail(path: string) {
 	const subject = options.subject ?? `Release v${options.pkgVersion || version} for ${options.packageName || name}`;
 	const transporter = nodemailer.createTransport({
 		service: 'gmail',
+		secure: true,
+		debug: true,
 		auth: {
 			user: options.username,
 			pass: options.password,
@@ -67,12 +69,12 @@ async function sendEmail(path: string) {
 		subject,
 		html: changelog,
 	};
-	transporter.sendMail(mailOptions, (error, info) => {
-		if (error) {
-			console.error(error);
-			return;
-		}
 
-		console.log('Email sent', info.messageId, info.response, info.envelope);
-	});
+	const result = await transporter.sendMail(mailOptions);
+	if (result.rejected.length > 0) {
+		console.error(result.rejected);
+		return;
+	}
+
+	console.log('Email sent', result);
 }
