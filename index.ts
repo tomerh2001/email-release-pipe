@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable @typescript-eslint/naming-convention */
 
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
@@ -52,7 +53,9 @@ async function sendEmail(path: string) {
 	const transporter = nodemailer.createTransport({
 		service: 'gmail',
 		secure: true,
+		logger: true,
 		debug: true,
+		ignoreTLS: true,
 		auth: {
 			user: options.username,
 			pass: options.password,
