@@ -13,7 +13,7 @@ import {emojify} from 'node-emoji';
 import Bun from 'bun';
 
 const program = new Command();
-program.argument('<basePath>', 'The base path of the package being released')
+program.argument('<path>', 'The base path of the package being released')
 	.option('-u, --username <type>', 'Username for authentication with the email server', Bun.env.EMAIL_USERNAME)
 	.option('-p, --password <type>', 'Password for authentication with the email server', Bun.env.EMAIL_PASSWORD)
 	.option('-f, --from <type>', 'Sender\'s email address', Bun.env.EMAIL_FROM)
@@ -23,18 +23,19 @@ program.argument('<basePath>', 'The base path of the package being released')
 	.option('--ssl-verify <boolean>', 'Whether or not to verify the SSL certificate of the email server', Bun.env.SSL_VERIFY === 'true')
 	.option('--changelog-file <type>', 'The path of the CHANGELOG.md file', Bun.env.CHANGELOG_FILE ?? 'CHANGELOG.md')
 	.option('-s, --subject <type>', 'The subject line to use for the release email', Bun.env.EMAIL_SUBJECT)
+	.action(sendEmail)
 	.parse(Bun.argv);
 
 const options = program.opts();
 
 /**
  * Retrieves the changelog from a file and returns it as a Markdown string with emojis.
- * @param basePath - The base path of the file.
- * @param filePath - The path of the file relative to the base path.
+ * @param path - The base path of the file.
+ * @param changelogPath - The path of the file relative to the base path.
  * @returns The changelog as a Markdown string with emojis.
  */
-async function getChangelog(basePath: string, filePath: string) {
-	const changelog = await Bun.file(join(basePath, filePath)).text();
+async function getChangelog(path: string, changelogPath: string) {
+	const changelog = await Bun.file(join(path, changelogPath)).text();
 	return marked(emojify(changelog));
 }
 
@@ -42,8 +43,8 @@ async function getChangelog(basePath: string, filePath: string) {
  * Sends an email with the changelog for a package release.
  * @returns A Promise that resolves when the email has been sent.
  */
-async function sendEmail() {
-	const packageJson = await Bun.file(join(options.basePath, 'package.json')).json();
+async function sendEmail(path: string) {
+	const packageJson = await Bun.file(join(path, 'package.json')).json();
 	const {name, version} = packageJson;
 
 	const subject = options.subject ?? `Release v${options.pkgVersion || version} for ${options.packageName || name}`;
@@ -58,7 +59,7 @@ async function sendEmail() {
 		},
 	});
 
-	const changelog = await getChangelog(options.basePath, options.changelogFile);
+	const changelog = await getChangelog(path, options.changelogFile);
 	const mailOptions = {
 		from: options.from,
 		to: options.to,
@@ -74,5 +75,3 @@ async function sendEmail() {
 		console.log('Email sent', info.messageId, info.response, info.envelope);
 	});
 }
-
-await sendEmail();
