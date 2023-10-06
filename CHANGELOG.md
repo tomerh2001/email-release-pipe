@@ -1,3 +1,10 @@
+## [1.3.7](https://github.com/tomerh2001/email-release-pipe/compare/v1.3.6...v1.3.7) (2023-10-06)
+
+
+### Bug Fixes
+
+* changed from promise to await ([9c9ff87](https://github.com/tomerh2001/email-release-pipe/commit/9c9ff8744edc9e7119193fdd4789dc98ea925199))
+
 ## [1.3.6](https://github.com/tomerh2001/email-release-pipe/compare/v1.3.5...v1.3.6) (2023-10-06)
 
 
